@@ -7,6 +7,8 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 const app = express();
+
+app.set('view engine', 'ejs');
 //false: querystring
 //true: qs
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +30,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
     res.status(500).send('Something Broke!');
+    throw err;
 });
 
 app.listen(3000);
