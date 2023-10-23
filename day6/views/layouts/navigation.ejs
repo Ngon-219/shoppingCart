@@ -7,10 +7,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item <%= path==='/' ? 'active' : '' %>">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <%= path==='/admin/add-product' ? 'active' : '' %>">
                     <a class="nav-link" href="/admin/add-product">Add Product</a>
                 </li>
                 <li class="nav-item">
