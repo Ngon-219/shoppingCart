@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.all('/', shopController.getAllProducts);
 
+router.get('/product/:prodID', shopController.getProductDetail)
+
 router.get('/error-demo', (req, res, next) => {
     throw new Error('This is to test Error handling in express');
 });

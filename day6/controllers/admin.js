@@ -12,7 +12,7 @@ exports.postProduct = (req, res, next) => {
     const price = req.body.price;
     const description = req.body.description;
 
-    const prod = new Product(title, price, imageURL, description);
+    const prod = new Product(null, title, price, imageURL, description);
     prod.save();
 
     console.log(Product.findAll());
