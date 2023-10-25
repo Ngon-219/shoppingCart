@@ -20,4 +20,19 @@ exports.postProduct = (req, res, next) => {
     res.redirect('/');
 }
 
+exports.editProductPage = (req, res, next) => {
+    const product = Product.findById(req.params.prodID);
+    res.render('edit-product', {prod: product[0], name: "Ngon", title: "Edit Product", path: '/admin/add-product'});
+}
 
+exports.postEditProduct = (req, res, next) => {
+    const product = Product.findById(req.params.prodID);
+    console.log('edit product successfully');
+    const title = req.body.title;
+    const imageURL = req.body.imageURL;
+    const price = req.body.price;
+    const description = req.body.description;
+
+    const prod = new Product(product.id, title, price, imageURL, description);
+    console.log(prod);
+}
