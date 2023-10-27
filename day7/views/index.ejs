@@ -1,0 +1,53 @@
+<%- include('layouts/head.ejs')%>
+
+<body>
+
+    <%- include('layouts/navigation.ejs') %>
+    <!-- Page Content -->
+    <div class="container">
+
+        <%- include('layouts/sidebar.ejs') %>
+            <!-- /.col-lg-3 -->
+
+            <%- include('layouts/carousel.ejs') %>
+           
+
+                <div class="row">
+                    <% for(let p of prods) { %>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top" src="<%= p.imageURL %>" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="#"><%= p.title %></a>
+                                </h4>
+                                <h5><%= p.price %></h5>
+                                <!-- <p class="card-text"><%= p.description %></p> -->
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" style="background-color: #3399CC; color: whitesmoke; border-radius: 5px; border: none;"><a href="/product/<%= p.id %>" style="text-decoration: none; color: whitesmoke;">View Detail</a></button>
+                                <button type="button" style="background-color: #3399CC; color: whitesmoke; border-radius: 5px; border: none;"><a href="/admin/edit-product/<%= p.id %>" style="text-decoration: none; color: whitesmoke;">Edit Product</a></button>
+                                <form action="/admin/delete-product" method="post" style="margin-top: 10px;">
+                                    <input type="hidden" name="id" value="<%= p.id %>">
+                                    <button type="button" style="background-color: #3399CC; color: whitesmoke; border-radius: 5px; border: none;"><a href="/admin/delete-product/<%= p.id %>" style="text-decoration: none; color: whitesmoke;">Delete Product</a></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.col-lg-9 -->
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <%- include('layouts/end.ejs') %>

@@ -16,9 +16,8 @@ class Product {
     }
 
     update() {
-        const index = Product.findById( p => p.id == this.id);
+        const index = products.findIndex(p => p.id == this.id);
         products[index] = this;
-        
     }
 
     static findAll() {
@@ -28,7 +27,6 @@ class Product {
     static findById(prodID) {
         return products.filter( p => p.id == prodID);
     }
-
 }
 
 module.exports = Product;

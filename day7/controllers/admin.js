@@ -26,8 +26,8 @@ exports.editProductPage = (req, res, next) => {
 }
 
 exports.postEditProduct = (req, res, next) => {
-    const updateProduct = new Product(req.body.id, req.body.title, req.body.imageURLL, req.body.price, req.body.description);
-    updateProduct.update();
+    const updateProduct = new Product(req.body.id, req.body.title, req.body.price, req.body.imageURL, req.body.description);
     console.log(updateProduct);
+    updateProduct.update();
     res.redirect('/');
 }

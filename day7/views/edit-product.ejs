@@ -12,22 +12,23 @@
                                     <div class="col-sm-12">
                                         <h2>Add Product</h2>
 
-                                        <form action="/admin/add-product" method="POST">
+                                        <form action="/admin/edit-product" method="POST">
+                                            <input type="hidden" name="id" value="<%= prod.id %>">
                                             <div class="form-group">
                                                 <label for="title">Title</label>
-                                                <input class="form-control" id="title" name="title" alt="<%= prod.title %>">
+                                                <input class="form-control" id="title" name="title" value="<%= prod.title %>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="price">Price</label>
-                                                <input class="form-control" id="price" name="price">
+                                                <input class="form-control" id="price" name="price" value="<%= prod.price%>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="imageURL">Image URL</label>
-                                                <input class="form-control" id="imageURL" name="imageURL">
+                                                <input class="form-control" id="imageURL" name="imageURL" value="<%= prod.imageURL %>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="description">Description</label>
-                                                <textarea class="form-control" name="description" id="description"></textarea>
+                                                <textarea class="form-control" name="description" id="description"><%= prod.description %></textarea>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </form>
