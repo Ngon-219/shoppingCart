@@ -27,9 +27,13 @@
                             <div class="card-footer">
                                 <button type="button" style="background-color: #3399CC; color: whitesmoke; border-radius: 5px; border: none;"><a href="/product/<%= p.id %>" style="text-decoration: none; color: whitesmoke;">View Detail</a></button>
                                 <button type="button" style="background-color: #3399CC; color: whitesmoke; border-radius: 5px; border: none;"><a href="/admin/edit-product/<%= p.id %>" style="text-decoration: none; color: whitesmoke;">Edit Product</a></button>
-                                <form action="/admin/delete-product" method="post" style="margin-top: 10px;">
+                                <form action="/admin/delete-product" method="POST" style="margin-top: 10px;">
                                     <input type="hidden" name="id" value="<%= p.id %>">
-                                    <button type="button" style="background-color: #3399CC; color: whitesmoke; border-radius: 5px; border: none;"><a href="/admin/delete-product/<%= p.id %>" style="text-decoration: none; color: whitesmoke;">Delete Product</a></button>
+                                    <button type="submit" style="background-color: #3399CC; color: whitesmoke; border-radius: 5px; border: none;">Delete</button>
+                                </form>
+                                <form action="/add-to-cart" method="POST" style="margin-top: 10px;">
+                                    <input type="hidden" name="id" value="<%= p.id %>">
+                                    <button type="submit" style="background-color: #3399CC; color: whitesmoke; border-radius: 5px; border: none;">Add to cart</button>
                                 </form>
                             </div>
                         </div>

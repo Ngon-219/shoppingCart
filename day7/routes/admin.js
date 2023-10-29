@@ -13,9 +13,7 @@ router.get('/edit-product/:prodID', adminController.editProductPage);
 
 router.post('/edit-product', adminController.postEditProduct);
 
-router.post('/delete-product', (req, res, next) => {
-    fs.createReadStream(path.join(__dirname, '..', 'views', 'add-product.html')).pipe(res);
-});
+router.post('/delete-product', adminController.deleteProduct);
 
 
 module.exports = router;

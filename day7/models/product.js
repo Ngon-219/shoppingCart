@@ -5,7 +5,7 @@ class Product {
     constructor(id, title, price, imageURL, description){
         this.id = id;
         this.title = title;
-        this.price = price;
+        this.price = new Number(price);
         this.imageURL = imageURL;
         this.description = description;
     }
@@ -26,6 +26,11 @@ class Product {
 
     static findById(prodID) {
         return products.filter( p => p.id == prodID);
+    }
+
+    static deleteById(prodID) {
+        const index = products.findIndex(p => p.id == prodID);
+        products.splice(index, 1);
     }
 }
 
