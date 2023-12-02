@@ -29,9 +29,17 @@ module.exports = class Cart {
     }
 
     static delete(productId) {
-        const products = cart.products;
-        const index = products.findIndex(p => p.id == productId);
-        
+        // console.log(productId);
+        const index = cart.products.findIndex(p => p.id == productId);
+        // cart.totalprice -= products[index].price;
+        // console.log(index);
+        if(index >= 0) {
+            console.log(cart.products[index].price);
+            const prod = cart.products[index];
+            cart.totalprice -= prod.price * prod.qty;
+            // cart.totalprice -= cart.products[index].price * cart.prodcuts[index].qty;
+            cart.products.splice(index, 1);
+        }
     }
 
 }

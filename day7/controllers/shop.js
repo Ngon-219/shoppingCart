@@ -19,7 +19,7 @@ exports.addToCart = (req, res, next) => {
     const addedProduct = Product.findById(req.body.id)[0];
     Cart.save(addedProduct);
     console.log(Cart.getCart());
-    res.redirect('/');
+    res.redirect('/cart');
 }
 
 exports.getCart = (req, res, next) => {
@@ -27,5 +27,6 @@ exports.getCart = (req, res, next) => {
 }
 
 exports.deleteInCart = (req, res, next) => {
-    Cart.delete(req.body.id);
+    Cart.delete(req.body.prodId);
+    res.redirect('/cart');
 }
