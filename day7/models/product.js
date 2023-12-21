@@ -1,4 +1,11 @@
+const { showAll } = require('../util/database');
+
 const products =[];
+const Prod = require('../util/database').Prod;
+const Products = require('../util/database').Product;
+const showTest = require('../util/database').showAll;
+const updateDb = require('../util/database').update
+const delDb = require('../util/database').delete
 
 class Product {
 
@@ -13,15 +20,15 @@ class Product {
     save() {
         this.id = Math.floor(Math.random() *1000000);
         products.push(this);
+        Prod(this.id, this.title, this.price, this.imageURL, this.description);
     }
 
-    update() {
-        const index = products.findIndex(p => p.id == this.id);
-        products[index] = this;
+    async update() {
+        await updateDb(this.id, this.title, this.price, this.imageURL, this.description);  
     }
 
-    static findAll() {
-        return products;
+    static async findAll() {
+        return await Products.find();
     }
 
     static findById(prodID) {
@@ -29,8 +36,7 @@ class Product {
     }
 
     static deleteById(prodID) {
-        const index = products.findIndex(p => p.id == prodID);
-        products.splice(index, 1);
+        delDb(prodID);
     }
 }
 

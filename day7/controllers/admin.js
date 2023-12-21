@@ -1,4 +1,5 @@
-const Product = require('../models/product')
+const Product = require('../models/product');
+const database = require('../util/database').find;
 
 exports.getProductForm = (req, res, next) => {
     res.render('add-product', {name: "Ngon", title: "Add Product", path: '/admin/add-product'});
@@ -13,6 +14,7 @@ exports.postProduct = (req, res, next) => {
     const description = req.body.description;
 
     const prod = new Product(null, title, price, imageURL, description);
+    console.log(prod);
     prod.save();
 
     // console.log(Product.findAll());
@@ -20,14 +22,16 @@ exports.postProduct = (req, res, next) => {
     res.redirect('/');
 }
 
-exports.editProductPage = (req, res, next) => {
-    const product = Product.findById(req.params.prodID);
-    res.render('edit-product', {prod: product[0], name: "Ngon", title: "Edit Product", path: '/admin/add-product'});
+exports.editProductPage = async (req, res, next) => {
+    const id = req.params.prodID;
+    const product = await database(id);
+    // console.log(product);
+    // const product = Product.findById(req.params.prodID);
+    res.render('edit-product', {prod: product[0], name: "Ngon", title: "Edit Product", path: '/admin/edit-product'});
 }
 
 exports.postEditProduct = (req, res, next) => {
     const updateProduct = new Product(req.body.id, req.body.title, req.body.price, req.body.imageURL, req.body.description);
-    console.log(updateProduct);
     updateProduct.update();
     res.redirect('/');
 }
